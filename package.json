@@ -5,7 +5,7 @@
   "homepage": "https://github.com/fresnosatech/olynpm-cli.git",
   "repository": {
     "type": "git",
-    "url": "https://github.com/fresnosatech/olynpm-cli.git"
+    "url": "git+https://github.com/fresnosatech/olynpm-cli.git"
   },
   "author": {
     "name": "Fresnosa Technologies",
