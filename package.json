@@ -1,0 +1,60 @@
+{
+  "name": "@fresnosatech/olynpm",
+  "version": "0.1.0",
+  "description": "Fitness App for your npm projects.",
+  "homepage": "https://github.com/fresnosatech/olynpm-cli.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fresnosatech/olynpm-cli.git"
+  },
+  "author": {
+    "name": "Fresnosa Technologies",
+    "email": "info@fresnosa.tech",
+    "url": "https://www.frenosa.tech"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": "^16.13.0 || >=18.0.0"
+  },
+  "type": "module",
+  "bin": {
+    "olynpm": "cli.js"
+  },
+  "files": [
+    "cli.js",
+    "lib/**/*.js",
+    "lib/**/*.json"
+  ],
+  "scripts": {
+    "olynpm": "./cli.js"
+  },
+  "keywords": [
+    "npm",
+    "javascript",
+    "typescript",
+    "dependencies",
+    "fitness",
+    "security",
+    "vulnerabilities",
+    "advisories",
+    "audit",
+    "scan",
+    "scanning",
+    "update",
+    "check"
+  ],
+  "devDependencies": {
+    "conventional-changelog-cli": "^4.1.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "commander": "^12.0.0",
+    "conf": "^12.0.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
