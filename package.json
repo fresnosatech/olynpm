@@ -1,11 +1,11 @@
 {
-  "name": "@fresnosatech/npm-fitness",
+  "name": "@fresnosatech/olynpm",
   "version": "0.1.0",
   "description": "Fitness App for your npm projects.",
-  "homepage": "https://github.com/fresnosatech/npm-fitness.git",
+  "homepage": "https://github.com/fresnosatech/olynpm-cli.git",
   "repository": {
     "type": "git",
-    "url": "https://github.com/fresnosatech/npm-fitness.git"
+    "url": "https://github.com/fresnosatech/olynpm-cli.git"
   },
   "author": {
     "name": "Fresnosa Technologies",
