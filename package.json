@@ -26,7 +26,8 @@
     "lib/**/*.json"
   ],
   "scripts": {
-    "olynpm": "./cli.js"
+    "olynpm": "./cli.js",
+    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md"
   },
   "keywords": [
     "npm",
