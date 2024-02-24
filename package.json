@@ -1,6 +1,6 @@
 {
   "name": "@fresnosatech/olynpm",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Fitness App for your npm projects.",
   "homepage": "https://github.com/fresnosatech/olynpm-cli.git",
   "repository": {
@@ -26,7 +26,8 @@
     "lib/**/*.json"
   ],
   "scripts": {
-    "olynpm": "./cli.js"
+    "olynpm": "./cli.js",
+    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md"
   },
   "keywords": [
     "npm",
