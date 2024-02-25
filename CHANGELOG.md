@@ -1,3 +1,12 @@
+## [0.1.2](https://github.com/fresnosatech/olynpm-cli/compare/v0.1.1...v0.1.2) (2024-02-25)
+
+
+### Features
+
+* **package.json:** rename package to 'olynpm' ([f303d91](https://github.com/fresnosatech/olynpm-cli/commit/f303d910e96ece075351a8997f34562d4a2e4300))
+
+
+
 ## 0.1.1 (2024-02-24)
 
 
