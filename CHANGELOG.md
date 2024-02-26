@@ -1,3 +1,12 @@
+## [0.1.3](https://github.com/fresnosatech/olynpm-cli/compare/v0.1.2...v0.1.3) (2024-02-26)
+
+
+### Features
+
+* **cli:** create report url ([be49401](https://github.com/fresnosatech/olynpm-cli/commit/be49401ed4d8b7a253f0a74deb5fc2981d56165e))
+
+
+
 ## [0.1.2](https://github.com/fresnosatech/olynpm-cli/compare/v0.1.1...v0.1.2) (2024-02-25)
 
 
