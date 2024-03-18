@@ -2,6 +2,7 @@
 
 import { Command } from "commander";
 import reportUrl from "./commands/reportUrl";
+import createReport from "./commands/createReport";
 
 const program = new Command();
 
@@ -12,7 +13,12 @@ program
 
 program
   .command("report-url")
-  .description("Create a link to the report based on project dependencies.")
+  .description("Create url for one off project dependencies report")
   .action(reportUrl);
+
+program
+  .command("track")
+  .description("Track project progress.")
+  .action(createReport);
 
 program.parse();
