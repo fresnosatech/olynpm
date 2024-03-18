@@ -1,7 +1,5 @@
 // Base URL
-export const OLYNPM_BASE_URL = "http://localhost:3000";
-// export const OLYNPM_BASE_URL =
-//   "https://olynpm-57iwjkmfa-martin-fresnosatech.vercel.app";
+export const OLYNPM_BASE_URL = "https://olynpm.fresnosa.tech";
 
 // Routes
 export const REPORT_URL = `${OLYNPM_BASE_URL}/report`;
