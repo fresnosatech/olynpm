@@ -1,3 +1,12 @@
+## [0.1.4](https://github.com/fresnosatech/olynpm-cli/compare/v0.1.3...v0.1.4) (2024-03-23)
+
+
+### Features
+
+* **core:** track project activity ([1ab96d7](https://github.com/fresnosatech/olynpm-cli/commit/1ab96d77e005fc5a9e611b8da7d25da3160af03b))
+
+
+
 ## [0.1.3](https://github.com/fresnosatech/olynpm-cli/compare/v0.1.2...v0.1.3) (2024-02-26)
 
 
