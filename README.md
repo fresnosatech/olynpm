@@ -61,4 +61,4 @@ This functionality requires an account from https://olynpm.fresnosa.tech/ and an
 
 WARNING: Olynpm reads information related to the dependencies used in your package.json and send that information together with the project name to a https://olynpm.fresnosa.tech/ in order to function properly.
 
-DISCLAIMER: By using this CLI, you state that you have read and understood the terms and conditions: https://olynpm.fresnosa.tech/tos
+DISCLAIMER: By using this CLI you agree to the following Terms of Service: https://olynpm.fresnosa.tech/tos
