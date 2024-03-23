@@ -2,9 +2,8 @@ import PackageJson from "@npmcli/package-json";
 import log from "npmlog";
 import Range from "semver/classes/range";
 import validRange from "semver/ranges/valid";
-
-const OLYNPM_BASE_URL = "https://toolkit.fresnosa.tech";
-const LOG_PREFIX = "olynpm";
+import { LOG_PREFIX, REPORT_URL } from "../lib/constants";
+import { valid } from "semver";
 
 /**
  * Given a SemVer Range. Resolves to the earliest one.
@@ -48,7 +47,7 @@ export default async function reportUrl() {
 
     // Skip package if version is missing.
     if (!versionRange) {
-      log.info(LOG_PREFIX, `Skiped: ${packageName}@${versionRange}`);
+      log.info(LOG_PREFIX, `Skiped: ${packageName} version is missing`);
 
       return;
     }
@@ -66,8 +65,11 @@ export default async function reportUrl() {
     }
 
     // Skip package with invalid version range.
-    if (!validRange(versionRange)) {
-      log.info(LOG_PREFIX, `Skiped: ${packageName}@${versionRange}`);
+    if (!validRange(versionRange) && !valid(versionRange)) {
+      log.info(
+        LOG_PREFIX,
+        `Skiped: ${packageName}@${versionRange} version format not supported.`
+      );
 
       return;
     }
@@ -80,7 +82,6 @@ export default async function reportUrl() {
     );
 
     list.push(`${packageName}@${resolvedVersion}`);
-
   });
 
   console.log(`\nGenerating report url for: ${pkg.name}`, "\n");
@@ -91,5 +92,5 @@ export default async function reportUrl() {
     "\n"
   );
 
-  console.log(`${OLYNPM_BASE_URL}/report?packages=${pkgs}`, "\n\n");
+  console.log(`${REPORT_URL}?packages=${pkgs}`, "\n\n");
 }
