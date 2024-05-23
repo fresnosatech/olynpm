@@ -1,3 +1,12 @@
+## [0.1.5](https://github.com/fresnosatech/olynpm-cli/compare/v0.1.4...v0.1.5) (2024-05-23)
+
+
+### Bug Fixes
+
+* **constants:** missing constants file build ([b5b575f](https://github.com/fresnosatech/olynpm-cli/commit/b5b575f5d03900876763755abc8933bbb886a433))
+
+
+
 ## [0.1.4](https://github.com/fresnosatech/olynpm-cli/compare/v0.1.3...v0.1.4) (2024-03-23)
 
 
