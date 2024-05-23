@@ -1,5 +1,4 @@
 import PackageJson from "@npmcli/package-json";
-import log from "npmlog";
 import validRange from "semver/ranges/valid";
 import * as dotenv from "dotenv";
 import {
@@ -8,6 +7,16 @@ import {
   REPORT_URL,
 } from "../lib/constants";
 import { valid } from "semver";
+import pino from "pino";
+
+const log = pino({
+  level: process.env.PINO_LOG_LEVEL || "info",
+  formatters: {
+    level: (label) => {
+      return { severity: label.toUpperCase() };
+    },
+  },
+});
 
 dotenv.config();
 
@@ -27,7 +36,7 @@ export default async function createReport() {
   const path = process.cwd();
   const { content: pkg } = await PackageJson.normalize(path).catch((err) => {
     if (err.code === "ENOENT") {
-      log.error(LOG_PREFIX, "package.json file not found.");
+      log.error({ log_prefix: LOG_PREFIX }, "package.json file not found.");
     }
     throw err;
   });
@@ -53,7 +62,10 @@ export default async function createReport() {
 
     // Skip package if version is missing.
     if (!versionRange) {
-      log.info(LOG_PREFIX, `Skiped: ${packageName} version is missing`);
+      log.info(
+        { log_prefix: LOG_PREFIX },
+        `Skiped: ${packageName} version is missing`
+      );
 
       return;
     }
@@ -61,7 +73,7 @@ export default async function createReport() {
     // version is latest
     if (/^latest$/.test(versionRange)) {
       list.push(`${packageName}@latest`);
-      log.info(LOG_PREFIX, `Found: ${packageName}@latest`);
+      log.info({ log_prefix: LOG_PREFIX }, `Found: ${packageName}@latest`);
 
       return;
     }
@@ -69,14 +81,17 @@ export default async function createReport() {
     // Skip package with invalid version range.
     if (!validRange(versionRange) && !valid(versionRange)) {
       log.info(
-        LOG_PREFIX,
+        { log_prefix: LOG_PREFIX },
         `Skiped: ${packageName}@${versionRange} version format not supported.`
       );
 
       return;
     }
 
-    log.info(LOG_PREFIX, `Found: ${packageName}@${versionRange}`);
+    log.info(
+      { log_prefix: LOG_PREFIX },
+      `Found: ${packageName}@${versionRange}`
+    );
     list.push(`${packageName}@${versionRange}`);
   });
 

@@ -1,9 +1,18 @@
 import PackageJson from "@npmcli/package-json";
-import log from "npmlog";
 import Range from "semver/classes/range";
 import validRange from "semver/ranges/valid";
 import { LOG_PREFIX, REPORT_URL } from "../lib/constants";
 import { valid } from "semver";
+import pino from "pino";
+
+const log = pino({
+  level: process.env.PINO_LOG_LEVEL || "info",
+  formatters: {
+    level: (label) => {
+      return { severity: label.toUpperCase() };
+    },
+  },
+});
 
 /**
  * Given a SemVer Range. Resolves to the earliest one.
@@ -27,7 +36,7 @@ export default async function reportUrl() {
   const path = process.cwd();
   const { content: pkg } = await PackageJson.normalize(path).catch((err) => {
     if (err.code === "ENOENT") {
-      log.warn(LOG_PREFIX, "package.json file not found.");
+      log.warn({ log_prefix: LOG_PREFIX }, "package.json file not found.");
     }
     throw err;
   });
@@ -47,7 +56,10 @@ export default async function reportUrl() {
 
     // Skip package if version is missing.
     if (!versionRange) {
-      log.info(LOG_PREFIX, `Skiped: ${packageName} version is missing`);
+      log.info(
+        { log_prefix: LOG_PREFIX },
+        `Skiped: ${packageName} version is missing`
+      );
 
       return;
     }
@@ -57,7 +69,7 @@ export default async function reportUrl() {
       list.push(packageName);
 
       log.info(
-        LOG_PREFIX,
+        { log_prefix: LOG_PREFIX },
         `Found: ${packageName}@${versionRange} -> ${versionRange}`
       );
 
@@ -67,7 +79,7 @@ export default async function reportUrl() {
     // Skip package with invalid version range.
     if (!validRange(versionRange) && !valid(versionRange)) {
       log.info(
-        LOG_PREFIX,
+        { log_prefix: LOG_PREFIX },
         `Skiped: ${packageName}@${versionRange} version format not supported.`
       );
 
@@ -77,7 +89,7 @@ export default async function reportUrl() {
     // Resolve range.
     const resolvedVersion = resolveVersionFromRange(versionRange);
     log.info(
-      LOG_PREFIX,
+      { log_prefix: LOG_PREFIX },
       `Found: ${packageName}@${versionRange} -> ${resolvedVersion}`
     );
 
