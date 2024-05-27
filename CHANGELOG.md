@@ -1,3 +1,12 @@
+## [0.1.6](https://github.com/fresnosatech/olynpm-cli/compare/v0.1.5...v0.1.6) (2024-05-27)
+
+
+### Features
+
+* **command outputs:** update command outputs ([ce15d2d](https://github.com/fresnosatech/olynpm-cli/commit/ce15d2d2e2013ebf25efcdd7ee81c69f2042942c))
+
+
+
 ## [0.1.5](https://github.com/fresnosatech/olynpm-cli/compare/v0.1.4...v0.1.5) (2024-05-23)
 
 
