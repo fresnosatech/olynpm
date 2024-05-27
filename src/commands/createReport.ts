@@ -30,7 +30,10 @@ export default async function createReport() {
     return;
   }
 
-  console.log("\nInspecting package.json for project dependencies.\n");
+  log.debug(
+    { log_prefix: LOG_PREFIX },
+    "Inspecting package.json for project dependencies."
+  );
 
   // Check for package.json file
   const path = process.cwd();
@@ -56,13 +59,13 @@ export default async function createReport() {
   const list: string[] = [];
 
   const dependencies = pkg.dependencies;
-  console.log(dependencies);
+  log.debug({ log_prefix: LOG_PREFIX }, JSON.stringify(dependencies));
   Object.keys(dependencies).forEach((packageName) => {
     const versionRange = dependencies[packageName];
 
     // Skip package if version is missing.
     if (!versionRange) {
-      log.info(
+      log.debug(
         { log_prefix: LOG_PREFIX },
         `Skiped: ${packageName} version is missing`
       );
@@ -73,14 +76,14 @@ export default async function createReport() {
     // version is latest
     if (/^latest$/.test(versionRange)) {
       list.push(`${packageName}@latest`);
-      log.info({ log_prefix: LOG_PREFIX }, `Found: ${packageName}@latest`);
+      log.debug({ log_prefix: LOG_PREFIX }, `Found: ${packageName}@latest`);
 
       return;
     }
 
     // Skip package with invalid version range.
     if (!validRange(versionRange) && !valid(versionRange)) {
-      log.info(
+      log.warn(
         { log_prefix: LOG_PREFIX },
         `Skiped: ${packageName}@${versionRange} version format not supported.`
       );
@@ -88,14 +91,15 @@ export default async function createReport() {
       return;
     }
 
-    log.info(
+    log.debug(
       { log_prefix: LOG_PREFIX },
       `Found: ${packageName}@${versionRange}`
     );
     list.push(`${packageName}@${versionRange}`);
   });
 
-  console.log(`\nCreating report: ${pkg.name}`);
+  console.log(`# Report created:\n`);
+  console.log(`- project: ${pkg.name}`);
 
   const headers = new Headers();
   headers.append("Content-Type", "application/json");
@@ -115,8 +119,7 @@ export default async function createReport() {
 
   const responseBody = await response.json();
   if (response.status == 200) {
-    console.log("\nNavigate to the following url to see the report: ", "\n");
-    console.log(`${REPORT_URL}?id=${responseBody.uuid}`, "\n\n");
+    console.log(`- url: ${REPORT_URL}?id=${responseBody.uuid}`, "\n\n");
 
     return;
   }

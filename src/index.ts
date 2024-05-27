@@ -9,7 +9,7 @@ const program = new Command();
 program
   .name("olynpm")
   .description("Fitness App for your npm projects.")
-  .version("0.1.3");
+  .version("0.1.6");
 
 program
   .command("report-url")

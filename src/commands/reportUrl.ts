@@ -56,7 +56,7 @@ export default async function reportUrl() {
 
     // Skip package if version is missing.
     if (!versionRange) {
-      log.info(
+      log.warn(
         { log_prefix: LOG_PREFIX },
         `Skiped: ${packageName} version is missing`
       );
@@ -68,7 +68,7 @@ export default async function reportUrl() {
     if (/^latest$/.test(versionRange)) {
       list.push(packageName);
 
-      log.info(
+      log.debug(
         { log_prefix: LOG_PREFIX },
         `Found: ${packageName}@${versionRange} -> ${versionRange}`
       );
@@ -78,7 +78,7 @@ export default async function reportUrl() {
 
     // Skip package with invalid version range.
     if (!validRange(versionRange) && !valid(versionRange)) {
-      log.info(
+      log.debug(
         { log_prefix: LOG_PREFIX },
         `Skiped: ${packageName}@${versionRange} version format not supported.`
       );
@@ -88,7 +88,7 @@ export default async function reportUrl() {
 
     // Resolve range.
     const resolvedVersion = resolveVersionFromRange(versionRange);
-    log.info(
+    log.debug(
       { log_prefix: LOG_PREFIX },
       `Found: ${packageName}@${versionRange} -> ${resolvedVersion}`
     );
