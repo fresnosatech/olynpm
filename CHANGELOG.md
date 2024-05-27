@@ -1,3 +1,12 @@
+## [0.1.7](https://github.com/fresnosatech/olynpm-cli/compare/v0.1.6...v0.1.7) (2024-05-27)
+
+
+### Bug Fixes
+
+* **logging:** bump log level to error ([cb3b34f](https://github.com/fresnosatech/olynpm-cli/commit/cb3b34feba609db869bcec8c4171b6504cacde37))
+
+
+
 ## [0.1.6](https://github.com/fresnosatech/olynpm-cli/compare/v0.1.5...v0.1.6) (2024-05-27)
 
 
