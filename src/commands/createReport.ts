@@ -10,7 +10,7 @@ import { valid } from "semver";
 import pino from "pino";
 
 const log = pino({
-  level: process.env.PINO_LOG_LEVEL || "info",
+  level: process.env.PINO_LOG_LEVEL || "error",
   formatters: {
     level: (label) => {
       return { severity: label.toUpperCase() };
