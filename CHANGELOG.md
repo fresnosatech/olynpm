@@ -1,3 +1,17 @@
+## [0.1.8](https://github.com/fresnosatech/olynpm-cli/compare/v0.1.6...v0.1.8) (2024-06-03)
+
+
+### Bug Fixes
+
+* **logging:** bump log level to error ([cb3b34f](https://github.com/fresnosatech/olynpm-cli/commit/cb3b34feba609db869bcec8c4171b6504cacde37))
+
+
+### Features
+
+* **cli:** rename 'track' to 'audit'. Update doc accordingly ([d1447c4](https://github.com/fresnosatech/olynpm-cli/commit/d1447c4993767b57aeff1f0ee0e5d51556651d80))
+
+
+
 ## [0.1.7](https://github.com/fresnosatech/olynpm-cli/compare/v0.1.6...v0.1.7) (2024-06-03)
 
 
