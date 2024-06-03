@@ -9,7 +9,7 @@ const program = new Command();
 program
   .name("olynpm")
   .description("Fitness App for your npm projects.")
-  .version("0.1.7");
+  .version("0.1.8");
 
 program
   .command("report-url")
@@ -17,8 +17,8 @@ program
   .action(reportUrl);
 
 program
-  .command("track")
-  .description("Track project progress.")
+  .command("audit")
+  .description("Create an audit report for your project dependencies.")
   .action(createReport);
 
 program.parse();
