@@ -8,6 +8,7 @@ import {
 } from "../lib/constants";
 import { valid } from "semver";
 import pino from "pino";
+import reportUrl from "./reportUrl";
 
 const log = pino({
   level: process.env.PINO_LOG_LEVEL || "error",
@@ -25,7 +26,11 @@ dotenv.config();
  */
 export default async function createReport() {
   if (!process.env.OLYNPM_ACCESS_TOKEN) {
-    log.error("olypnm", "Missing Authorization Token");
+    log.warn("olypnm", "Authorization Token not found");
+
+    console.log("OLYNPM Token not found, creating a one time off report.");
+
+    reportUrl();
 
     return;
   }
@@ -98,9 +103,6 @@ export default async function createReport() {
     list.push(`${packageName}@${versionRange}`);
   });
 
-  console.log(`# Report created:\n`);
-  console.log(`- project: ${pkg.name}`);
-
   const headers = new Headers();
   headers.append("Content-Type", "application/json");
   headers.append("Accept", "application/json");
@@ -119,6 +121,8 @@ export default async function createReport() {
 
   const responseBody = await response.json();
   if (response.status == 200) {
+    console.log(`# Report created:\n`);
+    console.log(`- project: ${pkg.name}`);
     console.log(`- url: ${REPORT_URL}?id=${responseBody.uuid}`, "\n\n");
 
     return;

@@ -17,8 +17,8 @@ program
   .action(reportUrl);
 
 program
-  .command("track")
-  .description("Track project progress.")
+  .command("audit")
+  .description("Create an audit report for your project dependencies.")
   .action(createReport);
 
 program.parse();

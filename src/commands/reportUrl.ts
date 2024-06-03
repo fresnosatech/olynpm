@@ -96,13 +96,10 @@ export default async function reportUrl() {
     list.push(`${packageName}@${resolvedVersion}`);
   });
 
-  console.log(`\nGenerating report url for: ${pkg.name}`, "\n");
+  console.log(`# Report created:\n`);
+  console.log(`- project: ${pkg.name}`);
 
   const pkgs = list.join(",");
-  console.log(
-    "\nNavigate to the following url to obtain the Fitness report: ",
-    "\n"
-  );
 
-  console.log(`${REPORT_URL}?packages=${pkgs}`, "\n\n");
+  console.log(`- url: ${REPORT_URL}?packages=${pkgs}`, "\n\n");
 }
